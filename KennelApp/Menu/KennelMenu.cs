@@ -23,7 +23,8 @@ namespace KennelApp.Menu
 
             MenuManager.CreateMenuItem(5, "Checked-in dog", RegisterCustomer.CustomerList);
             MenuManager.CreateMenuItem(6, "Checked-out dog", RegisterCustomer.CustomerList);
-            MenuManager.CreateMenuItem(7, "Show receipt", RegisterCustomer.CustomerList);
+            MenuManager.CreateMenuItem(7, "Extra Services", RegisterCustomer.CustomerList);
+            MenuManager.CreateMenuItem(8, "Show receipt", RegisterCustomer.CustomerList);
             MenuManager.ShowMenu();
         }
 
