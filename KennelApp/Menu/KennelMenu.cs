@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KennelApp.Menu
 {
@@ -17,9 +13,10 @@ namespace KennelApp.Menu
         public void Init()
         {
             // Creates the menu
-            MenuManager.CreateMenu("Dog Paradise Hotel.\n(Press x to exit.)");
-            MenuManager.CreateMenuItem(1, "Register a new customer", RegisterCustomer.DoThis);
+            MenuManager.CreateMenu("Paradise Dog Hotel.\n(Press x to exit.)");
+            MenuManager.CreateMenuItem(1, "Register a new customer", RegisterCustomer.AddCustomer);
             MenuManager.CreateMenuItem(2, "Register a new dog", RegisterDog.DoThat);
+            MenuManager.CreateMenuItem(3, "Show customers", RegisterCustomer.ListCustomers);
             MenuManager.ShowMenu();
         }
 

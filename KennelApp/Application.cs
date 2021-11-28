@@ -1,4 +1,6 @@
 ﻿using KennelApp.Menu;
+using KennelApp.Models;
+using System.Collections.Generic;
 
 namespace KennelApp
 {

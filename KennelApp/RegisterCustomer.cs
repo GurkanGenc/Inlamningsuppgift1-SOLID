@@ -1,21 +1,37 @@
-﻿using System;
+﻿using KennelApp.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KennelApp
 {
     class RegisterCustomer // Instead of ThingsToDo class
     {
-        public static void DoThis()
+        public static List<ICustomer> Customers = new List<ICustomer>();
+
+        //public RegisterCustomer(ICustomer customer)
+        //{
+        //    Customer = customer;
+        //}
+
+        public static void AddCustomer()
         {
-            Console.WriteLine("Doing This.");
+            ICustomer Customer = new Customer();
+            Console.WriteLine("Enter the name: ");
+            Customer.Name = Console.ReadLine();
+
+            Customers.Add(Customer);
+
+            Console.WriteLine("Customer created ");
         }
 
-        public static void DoThat()
+        internal static void ListCustomers()
         {
-            Console.WriteLine("Doing That.");
+            //Console.WriteLine($"Customer: {Customers}");
+
+            foreach (var customer in Customers)
+            {
+                Console.WriteLine("Customer's name: " + customer.Name);
+            }
         }
     }
 }
