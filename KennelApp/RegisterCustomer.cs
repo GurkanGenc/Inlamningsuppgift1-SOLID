@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 namespace KennelApp
 {
-    class RegisterCustomer
+    public class RegisterCustomer
     {
         public static List<ICustomer> Customers = new List<ICustomer>();
 
-        //public RegisterCustomer(ICustomer customer)
-        //{
-        //    Customer = customer;
-        //}
+        public static void CustomerDatabase()
+        {
+            Customers.Add(new Customer { Name = "Bosse"} );
+            Customers.Add(new Customer { Name = "Bojan" });
+        }
 
         public static void AddCustomer()
         {
@@ -24,14 +25,14 @@ namespace KennelApp
             Console.WriteLine("Customer has been registered!");
         }
 
-        internal static void ListCustomers()
+        internal static void CustomerList()
         {
-            //Console.WriteLine($"Customer: {Customers}");
-
             foreach (var customer in Customers)
             {
                 Console.WriteLine("Customer's name: " + customer.Name);
             }
         }
+
+        
     }
 }

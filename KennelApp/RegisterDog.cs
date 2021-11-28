@@ -8,6 +8,12 @@ namespace KennelApp
     {
         public static List<IDog> Dogs = new List<IDog>();
 
+        public static void DogDatabase()
+        {
+            Dogs.Add(new Dog { Name = "Bilbo" });
+            Dogs.Add(new Dog { Name = "Steffie" });
+        }
+
         public static void AddDog()
         {
             IDog Dog = new Dog();
@@ -21,7 +27,6 @@ namespace KennelApp
 
         internal static void ListDogs()
         {
-
             foreach (var dog in Dogs)
             {
                 Console.WriteLine("Dog's name: " + dog.Name);

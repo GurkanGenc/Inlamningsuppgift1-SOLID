@@ -1,4 +1,7 @@
-﻿namespace KennelApp.Menu
+﻿using KennelApp.Models;
+using System.Collections.Generic;
+
+namespace KennelApp.Menu
 {
     public interface IKennelMenu
     {
