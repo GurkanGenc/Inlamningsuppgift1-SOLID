@@ -34,7 +34,5 @@ namespace KennelApp
                 Console.WriteLine("Customer's name: " + customer.Name + " | Owner of: " + customer.OwnerOf);
             }
         }
-
-        
     }
 }

@@ -10,8 +10,8 @@ namespace KennelApp
 
         public static void DogDatabase()
         {
-            Dogs.Add(new Dog { Name = "Bilbo", Owner = "Bojan", Status = false, ExtraService = "None" });
-            Dogs.Add(new Dog { Name = "Steffie", Owner = "Bosse", Status = false, ExtraService = "None" });
+            Dogs.Add(new Dog { Name = "Bilbo", Owner = "Bojan", Status = false, Washing = false, Clipping = false });
+            Dogs.Add(new Dog { Name = "Steffie", Owner = "Bosse", Status = false, Washing = false, Clipping = false });
         }
 
         public static void AddDog()
@@ -32,9 +32,9 @@ namespace KennelApp
             foreach (var dog in Dogs)
             {
                 if (dog.Status == false)
-                    Console.WriteLine("Dog's name: " + dog.Name + " | Owner: " + dog.Owner + " | Status: NOT checked-in");
+                    Console.WriteLine("Dog's name: " + dog.Name + " | Owner: " + dog.Owner + " | Status: NOT checked-in | Washing Service: " + dog.Washing + " | Clipping Service: " + dog.Clipping);
                 else
-                    Console.WriteLine("Dog's name: " + dog.Name + " | Owner: " + dog.Owner + " | Status: Checked-in");
+                    Console.WriteLine("Dog's name: " + dog.Name + " | Owner: " + dog.Owner + " | Status: Checked-in | Washing Service: " + dog.Washing + " | Clipping Service: " + dog.Clipping);
             }
         }
 
@@ -70,14 +70,55 @@ namespace KennelApp
             Console.WriteLine("Dog has been Checked-out!: " + dateTime.ToShortDateString());
         }
 
-        public static void AddExtraService()
+        public static void AddWashingService()
         {
-            Console.WriteLine("Enter the service name: ");
-            var serviceName = Console.ReadLine();
+            Console.WriteLine("Enter the dog's name: ");
+            var animalToWash = Console.ReadLine();
 
-            
+            foreach (var dog in Dogs)
+            {
+                if (animalToWash == dog.Name)
+                    dog.Washing = true;
+            }
 
-            Console.WriteLine("Dog has been registered!");
+            Console.WriteLine("Service has been added!");
+        }
+
+        public static void AddClippingService()
+        {
+            Console.WriteLine("Enter the dog's name: ");
+            var animalToClip = Console.ReadLine();
+
+            foreach (var dog in Dogs)
+            {
+                if (animalToClip == dog.Name)
+                    dog.Clipping = true;
+            }
+
+            Console.WriteLine("Service has been added!");
+        }
+
+        public static void ShowReceipt()
+        {
+            Receipt receipt = new();
+
+            Console.WriteLine("Enter the dog's name: ");
+            var dogToReceiptName = Console.ReadLine();
+
+            foreach (var dog in Dogs)
+            {
+                if (dogToReceiptName == dog.Name)
+                {
+                    if (dog.Washing)
+                        Console.WriteLine(receipt.Price + receipt.WashingPrice + " SEK");
+                    else if (dog.Clipping)
+                        Console.WriteLine(receipt.Price + receipt.ClippingPrice + " SEK");
+                    else if (dog.Washing && dog.Clipping)
+                        Console.WriteLine(receipt.TotalPrice + " SEK");
+                    else
+                        Console.WriteLine(receipt.Price + " SEK");
+                }
+            }
         }
     }
 }

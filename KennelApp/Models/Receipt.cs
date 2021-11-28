@@ -8,7 +8,9 @@ namespace KennelApp.Models
 {
     class Receipt : IReceipt
     {
-        public string Price { get { return "120SEK"; } }
-        public string ExtraPrice { get; set; }
+        public int Price { get { return 120; } }
+        public int WashingPrice { get { return 100; } }
+        public int ClippingPrice { get { return 50; } }
+        public int TotalPrice { get { return 270; } }
     }
 }

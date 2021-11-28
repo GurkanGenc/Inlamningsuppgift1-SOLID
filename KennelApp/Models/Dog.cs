@@ -11,7 +11,10 @@ namespace KennelApp.Models
         public string Name { get; set; }
         public string Owner { get; set; }
         public bool Status { get; set; }
-        public string ExtraService { get; set; }
+
+        public bool Washing { get; set; }
+
+        public bool Clipping { get; set; }
 
     }
 }

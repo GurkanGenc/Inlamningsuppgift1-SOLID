@@ -2,7 +2,9 @@
 {
     interface IReceipt
     {
-        string ExtraPrice { get; set; }
-        string Price { get; }
+        int Price { get; }
+        int WashingPrice { get; }
+        int ClippingPrice { get; }
+        int TotalPrice { get; }
     }
 }
