@@ -10,15 +10,17 @@ namespace KennelApp
 
         public static void DogDatabase()
         {
-            Dogs.Add(new Dog { Name = "Bilbo" });
-            Dogs.Add(new Dog { Name = "Steffie" });
+            Dogs.Add(new Dog { Name = "Bilbo", Owner = "Bojan", Status = false });
+            Dogs.Add(new Dog { Name = "Steffie", Owner = "Bosse", Status = false });
         }
 
         public static void AddDog()
         {
             IDog Dog = new Dog();
-            Console.WriteLine("Enter the name: ");
+            Console.WriteLine("Enter the dog's name: ");
             Dog.Name = Console.ReadLine();
+            Console.WriteLine("Enter the owner's name: ");
+            Dog.Owner = Console.ReadLine();
 
             Dogs.Add(Dog);
 
@@ -29,7 +31,7 @@ namespace KennelApp
         {
             foreach (var dog in Dogs)
             {
-                Console.WriteLine("Dog's name: " + dog.Name);
+                Console.WriteLine("Dog's name: " + dog.Name + " | Owner: " + dog.Owner + " | Status: NOT checked-in");
             }
         }
     }

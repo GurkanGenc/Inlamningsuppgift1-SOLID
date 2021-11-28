@@ -9,5 +9,8 @@ namespace KennelApp.Models
     class Dog : IDog
     {
         public string Name { get; set; }
+        public string Owner { get; set; }
+        public bool Status { get; set; }
+
     }
 }

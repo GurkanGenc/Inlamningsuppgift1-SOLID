@@ -8,7 +8,7 @@ namespace KennelApp.Models
 {
     class Customer : ICustomer
     {
-        //public string Id { get; set; }
         public string Name { get; set; }
+        public string OwnerOf { get; set; }
     }
 }
