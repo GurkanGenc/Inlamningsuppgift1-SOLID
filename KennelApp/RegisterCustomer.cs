@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace KennelApp
 {
-    class RegisterCustomer // Instead of ThingsToDo class
+    class RegisterCustomer
     {
         public static List<ICustomer> Customers = new List<ICustomer>();
 
@@ -21,7 +21,7 @@ namespace KennelApp
 
             Customers.Add(Customer);
 
-            Console.WriteLine("Customer created ");
+            Console.WriteLine("Customer has been registered!");
         }
 
         internal static void ListCustomers()

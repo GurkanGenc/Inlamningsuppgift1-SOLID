@@ -1,17 +1,31 @@
-﻿using System;
+﻿using KennelApp.Models;
+using System;
+using System.Collections.Generic;
 
 namespace KennelApp
 {
-    class RegisterDog // Instead of ThingsToDo class
+    class RegisterDog
     {
-        public static void DoThis()
+        public static List<IDog> Dogs = new List<IDog>();
+
+        public static void AddDog()
         {
-            Console.WriteLine("Doing This.");
+            IDog Dog = new Dog();
+            Console.WriteLine("Enter the name: ");
+            Dog.Name = Console.ReadLine();
+
+            Dogs.Add(Dog);
+
+            Console.WriteLine("Dog has been registered!");
         }
 
-        public static void DoThat()
+        internal static void ListDogs()
         {
-            Console.WriteLine("Doing That.");
+
+            foreach (var dog in Dogs)
+            {
+                Console.WriteLine("Dog's name: " + dog.Name);
+            }
         }
     }
 }
