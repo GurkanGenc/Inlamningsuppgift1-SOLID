@@ -8,6 +8,6 @@
 
         bool Washing { get; set; }
 
-        public bool Clipping { get; set; }
+        bool Clipping { get; set; }
     }
 }

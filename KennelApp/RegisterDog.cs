@@ -1,12 +1,13 @@
 ﻿using KennelApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KennelApp
 {
     class RegisterDog
     {
-        public static List<IDog> Dogs = new List<IDog>();
+        public static List<IDog> Dogs = new();
 
         public static void DogDatabase()
         {
@@ -50,8 +51,8 @@ namespace KennelApp
             {
                 if (animalToCheckin == dog.Name)
                     dog.Status = true;
-            }
 
+            }
             Console.WriteLine("Dog has been Checked-in!: " + dateTime.ToShortDateString());
         }
 
