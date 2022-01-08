@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace KennelApp.Models
 {
-    class Dog : IDog
+    class Dog : IAnimal
     {
         public string Name { get; set; }
         public string Owner { get; set; }
         public bool Status { get; set; }
 
         public bool Washing { get; set; }
-
         public bool Clipping { get; set; }
 
     }

@@ -15,7 +15,7 @@ namespace KennelApp.Menu
         public void Init()
         {
             // Creates the menu
-            MenuManager.CreateMenu("Paradise Dog Hotel.\n(Press x to exit.)");
+            MenuManager.CreateMenu("Paradise Dog Hotel.\n(Press x to exit.)\n");
             MenuManager.CreateMenuItem(1, "Register a new customer", RegisterCustomer.AddCustomer);
             MenuManager.CreateMenuItem(2, "Register a new dog", RegisterDog.AddDog);
             MenuManager.CreateMenuItem(3, "Show customers", RegisterCustomer.CustomerList);

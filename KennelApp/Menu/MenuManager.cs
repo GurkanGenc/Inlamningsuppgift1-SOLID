@@ -34,6 +34,7 @@ namespace KennelApp.Menu
             {
                 Console.WriteLine(menuItem.Selector + ": " + menuItem.Name);
             }
+            Console.WriteLine();
         }
 
         public IMenu GetMenu()
