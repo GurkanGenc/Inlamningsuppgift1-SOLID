@@ -19,9 +19,9 @@ namespace KennelApp
         {
             IAnimal Dog = new Dog();
             Console.WriteLine("Enter the dog's name: ");
-            Dog.Name = Console.ReadLine().ToLower();
+            Dog.Name = Console.ReadLine();
             Console.WriteLine("Enter the owner's name: ");
-            Dog.Owner = Console.ReadLine().ToLower();
+            Dog.Owner = Console.ReadLine();
 
             if (Dog.Name != "" && Dog.Owner != "")
             {
@@ -32,7 +32,7 @@ namespace KennelApp
                 Console.WriteLine("Enter valid inputs!");
         }
 
-        internal static void ListDogs()
+        internal static void DogList()
         {
             foreach (var dog in Animals)
             {

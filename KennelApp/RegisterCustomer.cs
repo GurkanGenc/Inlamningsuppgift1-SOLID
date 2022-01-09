@@ -6,7 +6,7 @@ namespace KennelApp
 {
     public class RegisterCustomer
     {
-        public static List<ICustomer> Customers = new List<ICustomer>();
+        private static List<ICustomer> Customers = new();
 
         public static void CustomerDatabase()
         {
@@ -22,9 +22,14 @@ namespace KennelApp
             Console.WriteLine("Enter the dog's name: ");
             Customer.OwnerOf = Console.ReadLine();
 
-            Customers.Add(Customer);
-
-            Console.WriteLine("Customer has been registered!");
+            if (Customer.Name != "" && Customer.OwnerOf != "")
+            {
+                Customers.Add(Customer);
+                Console.WriteLine("Customer has been registered!");
+            }
+            else
+                Console.WriteLine("Enter valid inputs!");
+            
         }
 
         internal static void CustomerList()
