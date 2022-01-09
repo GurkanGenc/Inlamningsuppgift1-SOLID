@@ -7,13 +7,12 @@ namespace KennelApp
 {
     class RegisterDog
     {
-        public static List<IAnimal> Dogs = new();
-        private static List<IAnimal> CheckedInAnimals = new();
+        public static List<IAnimal> Animals = new();
 
         public static void DogDatabase()
         {
-            Dogs.Add(new Dog { Name = "Bilbo", Owner = "Bojan", Status = true, Washing = false, Clipping = false });
-            Dogs.Add(new Dog { Name = "Steffie", Owner = "Bosse", Status = false, Washing = false, Clipping = false });
+            Animals.Add(new Dog { Name = "Bilbo", Owner = "Bojan", Status = true, Washing = false, Clipping = false });
+            Animals.Add(new Dog { Name = "Steffie", Owner = "Bosse", Status = false, Washing = false, Clipping = false });
         }
 
         public static void AddDog()
@@ -26,7 +25,7 @@ namespace KennelApp
 
             if (Dog.Name != "" && Dog.Owner != "")
             {
-                Dogs.Add(Dog);
+                Animals.Add(Dog);
                 Console.WriteLine("Dog has been registered!");
             }
             else
@@ -35,7 +34,7 @@ namespace KennelApp
 
         internal static void ListDogs()
         {
-            foreach (var dog in Dogs)
+            foreach (var dog in Animals)
             {
                 if (dog.Status == false)
                     Console.WriteLine("Dog's name: " + dog.Name + " | Owner: " + dog.Owner + " | Status: NOT checked-in");
@@ -50,12 +49,11 @@ namespace KennelApp
             }
         }
 
-
         // Checks-in dog.
         public static void Checkin()
         {
-            Console.WriteLine("Avaiable dogs for checking-in:");
-            foreach (var dog in Dogs)
+            Console.WriteLine("Available Animals for checking-in:");
+            foreach (var dog in Animals)
             {
                 if (!dog.Status)
                     Console.WriteLine(dog.Name);
@@ -65,102 +63,107 @@ namespace KennelApp
             Console.WriteLine("\nEnter the dog's name to check-in: ");
             var animalToCheckin = Console.ReadLine().ToLower();
             
-            
-            foreach (var dog in Dogs)
+            foreach (var dog in Animals.Where(x => x.Status == false))
             {
                 if (animalToCheckin == dog.Name.ToLower())
                 {
                     dog.Status = true;
-                    CheckedInAnimals.Add(dog);
-
                     Console.WriteLine("Dog has been Checked-in!: " + dateTime.ToShortDateString());
                 }
-                else if (animalToCheckin.ToLower() != dog.Name.ToLower())
+                else if (animalToCheckin != dog.Name.ToLower())
                 {
                     Console.WriteLine("Animal is not found!");
                 }
-                else // Does not work
-                {
-                    Console.WriteLine("The animal is already checked-in!");
-                }
             }
+            //foreach (var dog in Animals.Where(x => x.Status == true))
+            //{
+            //    if (dog.Status && animalToCheckin == dog.Name.ToLower())
+            //    {
+            //        Console.WriteLine("The animal is already checked-in!");
+            //    }
+            //}
         }
 
         public static void Checkout()
         {
-            Console.WriteLine("Avaiable dogs for checking-out:\n" + Dogs.FirstOrDefault(x => x.Status == true).Name);
-            foreach (var checkedInDog in CheckedInAnimals)
+            Console.WriteLine("Available Animals for checking-out:");
+            foreach (var dog in Animals)
             {
-                if (checkedInDog.Status)
-                    Console.WriteLine(checkedInDog.Name);
-                else
-                    Console.WriteLine("No avaiable animal found!");
+                if (dog.Status)
+                    Console.WriteLine(dog.Name);
             }
 
             DateTime dateTime = DateTime.Now;
             Console.WriteLine("\nEnter the dog's name to check-out: ");
             var animalToCheckout = Console.ReadLine().ToLower();
 
-            foreach (var dog in Dogs)
+            foreach (var dog in Animals.Where(x => x.Status == true))
             {
-                if (animalToCheckout.ToLower() == dog.Name.ToLower())
+                if (animalToCheckout == dog.Name.ToLower())
                 {
                     dog.Status = false;
+                    Console.WriteLine("Dog has been Checked-out!: " + dateTime.ToShortDateString());
                 }
-            }
-
-            Console.WriteLine("Dog has been Checked-out!: " + dateTime.ToShortDateString());
+                else if (animalToCheckout != dog.Name.ToLower())
+                {
+                    Console.WriteLine("Animal is not found!");
+                }
+            }            
         }
 
         public static void AddWashingService()
         {
-            Console.WriteLine("Avaiable dogs for washing:");
-            foreach (var dog in Dogs.Where(x => x.Status == true))
+            Console.WriteLine("Avaiable Animals for washing:");
+            foreach (var dog in Animals.Where(x => x.Status == true))
             {
                 if (!dog.Washing)
                     Console.WriteLine(dog.Name);
                 else
-                    Console.WriteLine("No avaiable animal found!");
+                    Console.WriteLine("No available animal found!");
             }
            
             Console.WriteLine("\nEnter the dog's name: ");
             var animalToWash = Console.ReadLine().ToLower();
 
-            foreach (var dog in Dogs)
+            foreach (var dog in Animals.Where(x => x.Status == true))
             {
-                if (dog.Washing)
+                if (dog.Washing && animalToWash == dog.Name.ToLower())
                     Console.WriteLine("Animal already got this service!");
                 else if (animalToWash == dog.Name.ToLower())
                 {
                     dog.Washing = true;
                     Console.WriteLine("Washing service has been added! 100:-");
                 }
+                else if (animalToWash != dog.Name.ToLower() || animalToWash == "")
+                    Console.WriteLine("Animal is not found!");
             }
         }
 
         public static void AddClippingService()
         {
-            Console.WriteLine("Avaiable dogs for clipping:");
-            foreach (var dog in Dogs.Where(x => x.Status == true))
+            Console.WriteLine("Avaiable Animals for clipping:");
+            foreach (var dog in Animals.Where(x => x.Status == true))
             {
                 if (!dog.Clipping)
                     Console.WriteLine(dog.Name);
                 else
-                    Console.WriteLine("No avaiable animal found!");
+                    Console.WriteLine("No available animal found!");
             }
 
             Console.WriteLine("\nEnter the dog's name: ");
             var animalToClip = Console.ReadLine().ToLower();
 
-            foreach (var dog in Dogs)
+            foreach (var dog in Animals.Where(x => x.Status == true))
             {
-                if (dog.Clipping)
+                if (dog.Clipping && animalToClip == dog.Name.ToLower())
                     Console.WriteLine("Animal already got this service!");
                 else if (animalToClip == dog.Name.ToLower())
                 {
                     dog.Clipping = true;
                     Console.WriteLine("Clipping service has been added! 50:-");
                 }
+                else if (animalToClip != dog.Name.ToLower() || animalToClip == "")
+                    Console.WriteLine("Animal is not found!");
             }
         }
 
@@ -168,22 +171,35 @@ namespace KennelApp
         {
             Receipt receipt = new();
 
-            Console.WriteLine("Enter the dog's name: ");
+            Console.WriteLine("Available Animals to see the receipt:");
+            foreach (var dog in Animals)
+            {
+                if (dog.Status)
+                    Console.WriteLine(dog.Name);
+            }
+
+            Console.WriteLine("\nEnter the dog's name: ");
             var dogToReceiptName = Console.ReadLine().ToLower();
 
-            foreach (var dog in Dogs)
+            foreach (var dog in Animals.Where(x => x.Status == true))
             {
                 if (dogToReceiptName == dog.Name.ToLower())
                 {
                     if (dog.Washing && dog.Clipping == false)
-                        Console.WriteLine(receipt.Price + receipt.WashingPrice + " SEK");
+                        Console.WriteLine($"\nStaying: {receipt.Price} SEK\nWashing: {receipt.WashingPrice} SEK\n--------------------\nTotal price: {receipt.Price + receipt.WashingPrice} SEK");
                     else if (dog.Clipping && dog.Washing == false)
-                        Console.WriteLine(receipt.Price + receipt.ClippingPrice + " SEK");
+                        Console.WriteLine($"\nStaying: {receipt.Price} SEK\nClipping: {receipt.ClippingPrice} SEK\n--------------------\nTotal price: {receipt.Price + receipt.ClippingPrice} SEK");
                     else if (dog.Washing && dog.Clipping)
-                        Console.WriteLine(receipt.TotalPrice + " SEK");
+                        Console.WriteLine($"\nStaying: {receipt.Price} SEK\n" +
+                            $"Washing: {receipt.WashingPrice} SEK\n" +
+                            $"Clipping: {receipt.ClippingPrice} SEK\n" +
+                            $"--------------------\n" +
+                            $"Total price: {receipt.Price + receipt.WashingPrice + receipt.ClippingPrice} SEK");
                     else
-                        Console.WriteLine(receipt.Price + " SEK");
+                        Console.WriteLine("Staying: " + receipt.Price + " SEK");
                 }
+                else
+                    Console.WriteLine("Animal is not found!");
             }
         }
     }
