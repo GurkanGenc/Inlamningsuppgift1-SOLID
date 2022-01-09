@@ -18,7 +18,7 @@ namespace KennelApp
         public static void AddDog()
         {
             IAnimal Dog = new Dog();
-            Console.WriteLine("Enter the dog's name: ");
+            Console.WriteLine("To register a new dog\nEnter the dog's name: ");
             Dog.Name = Console.ReadLine();
             Console.WriteLine("Enter the owner's name: ");
             Dog.Owner = Console.ReadLine();

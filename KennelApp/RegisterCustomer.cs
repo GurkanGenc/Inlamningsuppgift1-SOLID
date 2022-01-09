@@ -17,7 +17,7 @@ namespace KennelApp
         public static void AddCustomer()
         {
             ICustomer Customer = new Customer();
-            Console.WriteLine("Enter the customer's name: ");
+            Console.WriteLine("To register a new customer\nEnter the customer's name: ");
             Customer.Name = Console.ReadLine();
             Console.WriteLine("Enter the dog's name: ");
             Customer.OwnerOf = Console.ReadLine();
