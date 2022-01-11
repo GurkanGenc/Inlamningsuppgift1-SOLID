@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KennelApp.Models
 {
-    class Dog : IAnimal
+    class Animal : IAnimal
     {
         public string Name { get; set; }
         public string Owner { get; set; }

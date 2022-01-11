@@ -1,4 +1,5 @@
 ﻿using KennelApp.Menu;
+using KennelApp.Models;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +16,7 @@ namespace KennelApp
 
         public void Run()
         {
-            RegisterCustomer.CustomerDatabase();
+            CustomerRegistration.CustomerDatabase();
             RegisterDog.DogDatabase();
 
             // Create Menu and Show It

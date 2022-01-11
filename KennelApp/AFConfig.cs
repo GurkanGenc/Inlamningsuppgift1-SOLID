@@ -27,8 +27,6 @@ namespace KennelApp
             //   .FirstOrDefault(x => x.Name == "I" + n.Name)) // Gets the first same name with the "Models" with an "I".
             //   .AsImplementedInterfaces();
 
-            builder.RegisterType<Dog>().As<IAnimal>();
-
             // Return the builder
             return builder.Build();
         }
