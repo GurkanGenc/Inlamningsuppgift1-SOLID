@@ -17,7 +17,7 @@ namespace KennelApp
         public void Run()
         {
             CustomerRegistration.CustomerDatabase();
-            RegisterDog.DogDatabase();
+            AnimalRegistration.AnimalDatabase();
 
             // Create Menu and Show It
             kennelMenu.Init();

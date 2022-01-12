@@ -10,5 +10,6 @@ namespace KennelApp.Models
     {
         public string Name { get; set; }
         public string OwnerOf { get; set; }
+        public string AnimalType { get; set; }
     }
 }

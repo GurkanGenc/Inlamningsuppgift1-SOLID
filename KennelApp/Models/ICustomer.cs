@@ -4,5 +4,6 @@
     {
         string Name { get; set; }
         string OwnerOf { get; set; }
+        string AnimalType { get; set; }
     }
 }
