@@ -82,13 +82,6 @@ namespace KennelApp.Models
                     Console.WriteLine("Animal is not found!");
                 }
             }
-            //foreach (var animal in Animals.Where(x => x.Status == true))
-            //{
-            //    if (animal.Status && animalToCheckin == animal.Name.ToLower())
-            //    {
-            //        Console.WriteLine("The animal is already checked-in!");
-            //    }
-            //}
         }
 
         public static void Checkout()
