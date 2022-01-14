@@ -12,23 +12,28 @@ namespace KennelApp.Models
 
         public static void CustomerDatabase()
         {
-            Customers.Add(new Customer { Name = "Towe", OwnerOf = "Steffie", AnimalType = "Dog" });
-            Customers.Add(new Customer { Name = "Sara", OwnerOf = "Sniff", AnimalType = "Dog" });
+            Customers.Add(new Customer("Towe", "Steffie", "Dog"));
+            Customers.Add(new Customer("Sara", "Sniff","Dog"));
+        }
+
+        public static void AddCustomer(string name, string ownerOf, string animalType)
+        {
+            Customers.Add(new Customer(name, ownerOf, animalType));
         }
 
         public static void AddCustomer()
         {
-            ICustomer Customer = Factory.RegisterCustomer();
             Console.WriteLine("To register a new customer\nEnter the customer's name: ");
-            Customer.Name = Console.ReadLine();
+            string name = Console.ReadLine();
             Console.WriteLine("Enter the animal's name: ");
-            Customer.OwnerOf = Console.ReadLine();
+            string ownerOf = Console.ReadLine();
             Console.WriteLine("Enter the animal type: ");
-            Customer.AnimalType = Console.ReadLine();
+            string animalType = Console.ReadLine();
 
-            if (Customer.Name != "" && Customer.OwnerOf != "" && Customer.AnimalType != "")
+            if (name != "" && ownerOf != "" && animalType != "")
             {
-                Customers.Add(Customer);
+                AddCustomer(name, ownerOf, animalType);
+                AnimalRegistration.AddAnimal(name, ownerOf, animalType);
                 Console.WriteLine("Customer has been registered!");
             }
             else

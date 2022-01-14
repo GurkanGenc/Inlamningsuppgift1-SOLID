@@ -12,24 +12,28 @@ namespace KennelApp.Models
 
         public static void AnimalDatabase()
         {
-            Animals.Add(new Animal { Name = "Steffie", Owner = "Towe", Type = "Dog", Status = true, Washing = false, Clipping = false });
-            Animals.Add(new Animal { Name = "Sniff", Owner = "Sara", Type = "Dog", Status = false, Washing = false, Clipping = false });
+            Animals.Add(new Animal ("Towe", "Steffie","Dog", true, false, false));
+            Animals.Add(new Animal ("Sara", "Sniff", "Dog", false, false, false));
         }
 
+        public static void AddAnimal(string ownerName, string animalName, string animalType)
+        {
+            Animals.Add(new Animal(ownerName, animalName, animalType, false, false, false));
+        }
         public static void AddAnimal()
         {
-            IAnimal Animal = new Animal();
             Console.WriteLine("To register a new animal\nEnter the animal's name: ");
-            Animal.Name = Console.ReadLine();
+            string name = Console.ReadLine();
             Console.WriteLine("Enter the owner's name: ");
-            Animal.Owner = Console.ReadLine();
+            string owner = Console.ReadLine();
             Console.WriteLine("Enter the animal type: ");
-            Animal.Type = Console.ReadLine();
+            string type = Console.ReadLine();
 
-            if (Animal.Name != "" && Animal.Owner != "" && Animal.Type != "")
+            if (name != "" && owner != "" && type != "")
             {
-                Animals.Add(Animal);
-                Console.WriteLine($"{Animal.Name} has been registered!");
+                AddAnimal(owner, name, type);
+                CustomerRegistration.AddCustomer(owner, name, type);
+                Console.WriteLine($"{name} has been registered!");
             }
             else
                 Console.WriteLine("Enter valid inputs!");
