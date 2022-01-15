@@ -7,7 +7,7 @@ namespace KennelApp
 {
     public class Application : IApplication
     {
-        private IKennelMenu kennelMenu;
+        private readonly IKennelMenu kennelMenu;
 
         public Application(IKennelMenu kennelMenu)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KennelApp.Models
 {
-    public class AnimalRegistration
+    public class AnimalRegistration : IAnimalRegistration
     {
         private static readonly List<IAnimal> Animals = new();
 
@@ -20,7 +20,7 @@ namespace KennelApp.Models
         {
             Animals.Add(new Animal(ownerName, animalName, animalType, false, false, false));
         }
-        public static void AddAnimal()
+        public void AddAnimal()
         {
             Console.WriteLine("To register a new animal\nEnter the animal's name: ");
             string name = Console.ReadLine();
@@ -39,7 +39,7 @@ namespace KennelApp.Models
                 Console.WriteLine("Enter valid inputs!");
         }
 
-        internal static void AnimalList()
+        public void AnimalList()
         {
             foreach (var animal in Animals)
             {
@@ -57,7 +57,7 @@ namespace KennelApp.Models
         }
 
         // Checks-in animal.
-        public static void Checkin()
+        public void Checkin()
         {
             Console.WriteLine("Available Animals for checking-in:");
             foreach (var animal in Animals)
@@ -84,7 +84,7 @@ namespace KennelApp.Models
             }
         }
 
-        public static void Checkout()
+        public void Checkout()
         {
             Console.WriteLine("Available Animals for checking-out:");
             foreach (var animal in Animals)
@@ -112,7 +112,7 @@ namespace KennelApp.Models
             }
         }
 
-        public static void AddWashingService()
+        public void AddWashingService()
         {
             Console.WriteLine("Avaiable Animals for washing:");
             foreach (var animal in Animals.Where(x => x.Status == true))
@@ -140,7 +140,7 @@ namespace KennelApp.Models
             }
         }
 
-        public static void AddClippingService()
+        public void AddClippingService()
         {
             Console.WriteLine("Avaiable Animals for clipping:");
             foreach (var animal in Animals.Where(x => x.Status == true))
@@ -204,7 +204,7 @@ namespace KennelApp.Models
         //    }
         //}
 
-        public static void ShowReceipt(string animalName)
+        public void ShowReceipt(string animalName)
         {
             Receipt receipt = new();
 

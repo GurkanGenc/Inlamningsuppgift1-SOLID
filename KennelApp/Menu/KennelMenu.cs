@@ -6,11 +6,13 @@ namespace KennelApp.Menu
 {
     class KennelMenu : IKennelMenu
     {
-        private IMenuManager MenuManager;
+        private readonly IMenuManager MenuManager;
+        private readonly IAnimalRegistration AnimalRegistration;
 
-        public KennelMenu(IMenuManager menuManager)
+        public KennelMenu(IMenuManager menuManager, IAnimalRegistration animalRegistration)
         {
             MenuManager = menuManager;
+            AnimalRegistration = animalRegistration;
         }
         public void Init()
         {
@@ -24,7 +26,6 @@ namespace KennelApp.Menu
             MenuManager.CreateMenuItem(6, "Checked-out animal", AnimalRegistration.Checkout);
             MenuManager.CreateMenuItem(7, "Washing", AnimalRegistration.AddWashingService);
             MenuManager.CreateMenuItem(8, "Clipping", AnimalRegistration.AddClippingService);
-            //MenuManager.CreateMenuItem(9, "Show receipt", AnimalRegistration.ShowReceipt);
             MenuManager.ShowMenu();
         }
 

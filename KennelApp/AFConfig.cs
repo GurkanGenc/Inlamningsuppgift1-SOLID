@@ -14,6 +14,8 @@ namespace KennelApp
             // Register the main application
             builder.RegisterType<Application>().As<IApplication>();
 
+            builder.RegisterType<AnimalRegistration>().As<IAnimalRegistration>();
+
             // Register the rest of the service
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .Where(n => n.Namespace.Contains("Menu")) // "Menu" here is the folder's name that contains all the menu classes.
