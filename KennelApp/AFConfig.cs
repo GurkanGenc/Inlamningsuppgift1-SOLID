@@ -15,6 +15,7 @@ namespace KennelApp
             builder.RegisterType<Application>().As<IApplication>();
 
             builder.RegisterType<AnimalRegistration>().As<IAnimalRegistration>();
+            builder.RegisterType<CustomerRegistration>().As<ICustomerRegistration>();
 
             // Register the rest of the service
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())

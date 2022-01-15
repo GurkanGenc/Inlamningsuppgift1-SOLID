@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KennelApp.Models
 {
-    public class CustomerRegistration
+    public class CustomerRegistration : ICustomerRegistration
     {
         private static readonly List<ICustomer> Customers = new();
 
@@ -21,7 +21,7 @@ namespace KennelApp.Models
             Customers.Add(new Customer(name, ownerOf, animalType));
         }
 
-        public static void AddCustomer()
+        public void AddCustomer()
         {
             Console.WriteLine("To register a new customer\nEnter the customer's name: ");
             string name = Console.ReadLine();
@@ -38,10 +38,9 @@ namespace KennelApp.Models
             }
             else
                 Console.WriteLine("Enter valid inputs!");
-
         }
 
-        internal static void CustomerList()
+        public void CustomerList()
         {
             foreach (var customer in Customers)
             {

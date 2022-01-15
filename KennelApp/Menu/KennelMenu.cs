@@ -8,11 +8,13 @@ namespace KennelApp.Menu
     {
         private readonly IMenuManager MenuManager;
         private readonly IAnimalRegistration AnimalRegistration;
+        private readonly ICustomerRegistration CustomerRegistration;
 
-        public KennelMenu(IMenuManager menuManager, IAnimalRegistration animalRegistration)
+        public KennelMenu(IMenuManager menuManager, IAnimalRegistration animalRegistration, ICustomerRegistration customerRegistration)
         {
             MenuManager = menuManager;
             AnimalRegistration = animalRegistration;
+            CustomerRegistration = customerRegistration;
         }
         public void Init()
         {
