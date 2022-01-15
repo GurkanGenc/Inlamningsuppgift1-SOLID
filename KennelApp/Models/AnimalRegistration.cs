@@ -8,7 +8,7 @@ namespace KennelApp.Models
 {
     public class AnimalRegistration
     {
-        public static List<IAnimal> Animals = new();
+        private static readonly List<IAnimal> Animals = new();
 
         public static void AnimalDatabase()
         {
@@ -102,7 +102,8 @@ namespace KennelApp.Models
                 if (animalToCheckout == animal.Name.ToLower())
                 {
                     animal.Status = false;
-                    Console.WriteLine("Animal has been Checked-out!: " + dateTime.ToShortDateString());
+                    Console.WriteLine($"{animal.Name} has been Checked-out!: {dateTime.ToShortDateString()}");
+                    ShowReceipt(animalToCheckout.ToLower());
                 }
                 else if (animalToCheckout != animal.Name.ToLower())
                 {
@@ -167,23 +168,49 @@ namespace KennelApp.Models
             }
         }
 
-        public static void ShowReceipt()
+        //public static void ShowReceipt()
+        //{
+        //    Receipt receipt = new();
+
+        //    Console.WriteLine("Available Animals to see the receipt:");
+        //    foreach (var animal in Animals)
+        //    {
+        //        if (animal.Status)
+        //            Console.WriteLine(animal.Name);
+        //    }
+
+        //    Console.WriteLine("\nEnter the animal's name: ");
+        //    var dogToReceiptName = Console.ReadLine().ToLower();
+
+        //    foreach (var animal in Animals.Where(x => x.Status == true))
+        //    {
+        //        if (dogToReceiptName == animal.Name.ToLower())
+        //        {
+        //            if (animal.Washing && animal.Clipping == false)
+        //                Console.WriteLine($"\nStaying: {receipt.Price} SEK\nWashing: {receipt.WashingPrice} SEK\n--------------------\nTotal price: {receipt.Price + receipt.WashingPrice} SEK");
+        //            else if (animal.Clipping && animal.Washing == false)
+        //                Console.WriteLine($"\nStaying: {receipt.Price} SEK\nClipping: {receipt.ClippingPrice} SEK\n--------------------\nTotal price: {receipt.Price + receipt.ClippingPrice} SEK");
+        //            else if (animal.Washing && animal.Clipping)
+        //                Console.WriteLine($"\nStaying: {receipt.Price} SEK\n" +
+        //                    $"Washing: {receipt.WashingPrice} SEK\n" +
+        //                    $"Clipping: {receipt.ClippingPrice} SEK\n" +
+        //                    $"--------------------\n" +
+        //                    $"Total price: {receipt.Price + receipt.WashingPrice + receipt.ClippingPrice} SEK");
+        //            else
+        //                Console.WriteLine("Staying: " + receipt.Price + " SEK");
+        //        }
+        //        else
+        //            Console.WriteLine("Animal is not found!");
+        //    }
+        //}
+
+        public static void ShowReceipt(string animalName)
         {
             Receipt receipt = new();
 
-            Console.WriteLine("Available Animals to see the receipt:");
-            foreach (var animal in Animals)
+            foreach (var animal in Animals.Where(x => x.Status == false))
             {
-                if (animal.Status)
-                    Console.WriteLine(animal.Name);
-            }
-
-            Console.WriteLine("\nEnter the animal's name: ");
-            var dogToReceiptName = Console.ReadLine().ToLower();
-
-            foreach (var animal in Animals.Where(x => x.Status == true))
-            {
-                if (dogToReceiptName == animal.Name.ToLower())
+                if (animalName.ToLower() == animal.Name.ToLower())
                 {
                     if (animal.Washing && animal.Clipping == false)
                         Console.WriteLine($"\nStaying: {receipt.Price} SEK\nWashing: {receipt.WashingPrice} SEK\n--------------------\nTotal price: {receipt.Price + receipt.WashingPrice} SEK");
@@ -196,7 +223,7 @@ namespace KennelApp.Models
                             $"--------------------\n" +
                             $"Total price: {receipt.Price + receipt.WashingPrice + receipt.ClippingPrice} SEK");
                     else
-                        Console.WriteLine("Staying: " + receipt.Price + " SEK");
+                        Console.WriteLine("\nStaying: " + receipt.Price + " SEK");
                 }
                 else
                     Console.WriteLine("Animal is not found!");

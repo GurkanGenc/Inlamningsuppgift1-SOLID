@@ -24,7 +24,7 @@ namespace KennelApp.Menu
             MenuManager.CreateMenuItem(6, "Checked-out animal", AnimalRegistration.Checkout);
             MenuManager.CreateMenuItem(7, "Washing", AnimalRegistration.AddWashingService);
             MenuManager.CreateMenuItem(8, "Clipping", AnimalRegistration.AddClippingService);
-            MenuManager.CreateMenuItem(9, "Show receipt", AnimalRegistration.ShowReceipt);
+            //MenuManager.CreateMenuItem(9, "Show receipt", AnimalRegistration.ShowReceipt);
             MenuManager.ShowMenu();
         }
 
