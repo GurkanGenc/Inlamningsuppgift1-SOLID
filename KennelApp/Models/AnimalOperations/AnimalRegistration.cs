@@ -75,7 +75,7 @@ namespace KennelApp.Models
                 if (animalToCheckin == animal.Name.ToLower())
                 {
                     animal.Status = true;
-                    Console.WriteLine($"{animal.Name} has been Checked-in!: {dateTime.ToShortDateString()}");
+                    Console.WriteLine($"{animal.Name} has been Checked-in at: {dateTime.ToShortDateString()}.");
                 }
                 else if (animalToCheckin != animal.Name.ToLower())
                 {
@@ -105,7 +105,7 @@ namespace KennelApp.Models
                     Console.WriteLine($"{animal.Name} has been Checked-out!: {dateTime.ToShortDateString()}");
                     ShowReceipt(animalToCheckout.ToLower());
                 }
-                else if (animalToCheckout != animal.Name.ToLower())
+                else if (animalToCheckout != animal.Name.ToLower() || !animal.Status)
                 {
                     Console.WriteLine("Animal is not found!");
                 }
@@ -130,7 +130,7 @@ namespace KennelApp.Models
             {
                 if (animal.Washing && animalToWash == animal.Name.ToLower())
                     Console.WriteLine("Animal already got this service!");
-                else if (animalToWash == animal.Name.ToLower())
+                else if (!animal.Washing && animalToWash == animal.Name.ToLower())
                 {
                     animal.Washing = true;
                     Console.WriteLine("Washing service has been added! 100:-");
