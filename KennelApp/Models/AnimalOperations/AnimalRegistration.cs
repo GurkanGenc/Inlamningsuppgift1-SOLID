@@ -99,13 +99,13 @@ namespace KennelApp.Models
 
             foreach (var animal in Animals.Where(x => x.Status == true))
             {
-                if (animalToCheckout == animal.Name.ToLower())
+                if (animalToCheckout.ToLower() == animal.Name.ToLower())
                 {
                     animal.Status = false;
                     Console.WriteLine($"{animal.Name} has been Checked-out!: {dateTime.ToShortDateString()}");
                     ShowReceipt(animalToCheckout.ToLower());
                 }
-                else if (animalToCheckout != animal.Name.ToLower() || !animal.Status)
+                else if (animalToCheckout.ToLower() != animal.Name.ToLower())
                 {
                     Console.WriteLine("Animal is not found!");
                 }
@@ -188,6 +188,7 @@ namespace KennelApp.Models
                             $"Total price: {receipt.Price + receipt.WashingPrice + receipt.ClippingPrice} SEK");
                     else
                         Console.WriteLine("\nStaying: " + receipt.Price + " SEK");
+                    break;
                 }
                 else
                     Console.WriteLine("Animal is not found!");
